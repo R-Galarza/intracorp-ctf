@@ -221,14 +221,14 @@ footer{margin-top:auto;border-top:1px solid var(--border);padding:20px 60px;disp
 </section>
 
 <section style="padding-top:0">
-  <div class="section-hd">Registro de Flags</div>
+  <div class="section-hd">Registro de Retos</div>
   <table class="flag-table">
-    <thead><tr><th>#</th><th>Reto</th><th>Servicio</th><th>Flag</th></tr></thead>
+    <thead><tr><th>#</th><th>Reto</th><th>Servicio</th><th>Estado</th></tr></thead>
     <tbody>
-      <tr><td>01</td><td>SQL Injection</td><td>portal.intracorp.local</td><td><code>flag{sqli_filter_bypass}</code></td></tr>
-      <tr><td>02</td><td>IDOR Encoded</td><td>api.intracorp.local</td><td><code>flag{idor_encoded_access}</code></td></tr>
-      <tr><td>03</td><td>Command Injection</td><td>tools.intracorp.local</td><td><code>flag{command_injection_blacklist}</code></td></tr>
-      <tr><td>04</td><td>SSTI Jinja2</td><td>billing.intracorp.local</td><td><code>flag{ssti_without_os}</code></td></tr>
+      <tr><td>01</td><td>SQL Injection</td><td>portal.intracorp.local</td>
+      <tr><td>02</td><td>IDOR Encoded</td><td>api.intracorp.local</td>
+      <tr><td>03</td><td>Command Injection</td><td>tools.intracorp.local</td>
+      <tr><td>04</td><td>SSTI Jinja2</td><td>billing.intracorp.local</td>
     </tbody>
   </table>
 </section>

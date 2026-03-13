@@ -443,11 +443,16 @@ flag{ssti_without_os}             ← CH04 SSTI
 ## Disclaimer
 
 > Este proyecto es **exclusivamente educativo**. Las vulnerabilidades son **intencionadas** y están contenidas en entornos Docker aislados sin conexión a internet.  
+
 > No usar contra sistemas sin autorización explícita del propietario.  
+
 > El uso indebido de estas técnicas puede tener consecuencias legales.
 
 ---
 
+---
 <div align="center">
   Hecho para practicas de seguridad web · MIT License
 </div>
+
+---

@@ -223,12 +223,39 @@ footer{margin-top:auto;border-top:1px solid var(--border);padding:20px 60px;disp
 <section style="padding-top:0">
   <div class="section-hd">Registro de Retos</div>
   <table class="flag-table">
-    <thead><tr><th>#</th><th>Reto</th><th>Servicio</th><th>Flag(Haz tu diligencia)</th></tr></thead>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Reto</th>
+        <th>Servicio</th>
+        <th>Flag (Haz tu diligencia)</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr><td>01</td><td>SQL Injection</td><td>portal.intracorp.local</td><code>flag{s****_****_****s}</code></td></tr>
-      <tr><td>02</td><td>IDOR Encoded</td><td>api.intracorp.local</td><code>flag{****r_****d_****}</code></td></tr>
-      <tr><td>03</td><td>Command Injection</td><td>tools.intracorp.local</td><code>flag{c****_**n**_****}</code></td></tr>
-      <tr><td>04</td><td>SSTI Jinja2</td><td>billing.intracorp.local</td><code>flag{****_wit****_****}</code></td></tr>
+      <tr>
+        <td>01</td>
+        <td>SQL Injection</td>
+        <td>portal.intracorp.local</td>
+        <td><code>flag{s****_****_****s}</code></td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>IDOR Encoded</td>
+        <td>api.intracorp.local</td>
+        <td><code>flag{****r_****d_****}</code></td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Command Injection</td>
+        <td>tools.intracorp.local</td>
+        <td><code>flag{c****_**n**_****}</code></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>SSTI Jinja2</td>
+        <td>billing.intracorp.local</td>
+        <td><code>flag{****_wit****_****}</code></td>
+      </tr>
     </tbody>
   </table>
 </section>

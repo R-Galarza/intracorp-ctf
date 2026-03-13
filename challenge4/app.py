@@ -94,10 +94,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 
   <div class="finfo">
     <h3>// Filtro WAF activo</h3>
-    <p>El sistema bloquea la cadena exacta <code>os</code> cuando aparece <em>sin comillas</em> en el input.</p>
-    <p>Sin embargo Python permite concatenaci&oacute;n impl&iacute;cita de strings: <code class="ok">'o''s'</code> equivale a <code>'os'</code> en tiempo de ejecuci&oacute;n.</p>
-    <p>Tambi&eacute;n puedes acceder directamente a <code class="ok">__builtins__</code> desde <code class="ok">cycler</code> con bracket notation: <code class="ok">cycler.__init__.__globals__.__builtins__['open'](...)</code> para leer archivos sin ninguna importaci&oacute;n.
-  </div>
+    <p>METE MANO.</p>
 </div>
 </main>
 <footer>

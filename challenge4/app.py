@@ -76,7 +76,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
           <input type="text" name="customer_name" placeholder="Ej: Acme Corp" value="{{ customer or '' }}" autocomplete="off">
         </div>
         <div class="row">
-          <div class="fg"><label>Monto (USD)</label><input name="amount" placeholder="0.00" value="{{ amount or '' }}"></div>
+          <div class="fg"><label>Monto (USD)</label><input type="number" name="amount" placeholder="0.00" min="0" step="0.01" value="{{ amount or '' }}"></div>
           <div class="fg"><label>Servicio</label>
             <select name="service">
               <option>Consultor&iacute;a</option><option>Licencias</option>
@@ -94,7 +94,8 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 
   <div class="finfo">
     <h3>// Filtro WAF activo</h3>
-    <p>METE MANO.</p>
+    <p>Dios te ilumine</p>
+    </div>
 </div>
 </main>
 <footer>
@@ -127,6 +128,13 @@ def invoice():
     customer = request.form.get('customer_name', '')
     amount   = request.form.get('amount', '0.00')
 
+    # Validar que amount sea numérico (solo dígitos y punto decimal)
+    import re as _re
+    if not _re.match(r'^\d+(\.\d{1,2})?$', amount.strip()):
+        return render_template_string(HTML,
+            result='[ERROR] El campo Monto solo acepta valores numéricos (ej: 100 o 99.99).',
+            rclass='blocked', customer=customer, amount=amount)
+
     if is_blocked(customer):
         return render_template_string(HTML,
             result='[WAF] El t&eacute;rmino "os" est&aacute; bloqueado. Intenta ofuscarlo.',
@@ -146,4 +154,4 @@ def invoice():
             rclass='blocked', customer=customer, amount=amount)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=False

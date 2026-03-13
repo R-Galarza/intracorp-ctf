@@ -15,16 +15,16 @@ def init_db():
         CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, role TEXT);
         CREATE TABLE sneakers (id INTEGER PRIMARY KEY, brand TEXT, model TEXT, price TEXT, colorway TEXT, img_url TEXT);
         CREATE TABLE secrets (id INTEGER PRIMARY KEY, flag TEXT, note TEXT);
-        INSERT INTO users VALUES (1,'admin','S3cur3Pass','admin');
+        INSERT INTO users VALUES (1,'admin','$3CuR3_P@55!','admin');
         INSERT INTO users VALUES (2,'jperez','juan2024','user');
         INSERT INTO users VALUES (3,'mrodriguez','maria123','user');
-        INSERT INTO users VALUES (4,'super_user','bypass_me','superadmin');
-        INSERT INTO sneakers VALUES (1,'Nike','Air Max 90','$120','White/Red','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80');
-        INSERT INTO sneakers VALUES (2,'Adidas','Ultraboost 22','$180','Core Black','https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80');
-        INSERT INTO sneakers VALUES (3,'Jordan','Air Jordan 1 Retro','$220','Chicago Red','https://images.unsplash.com/photo-1556906781-9a412961d28e?w=400&q=80');
-        INSERT INTO sneakers VALUES (4,'New Balance','990v5','$175','Grey/Navy','https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=80');
-        INSERT INTO sneakers VALUES (5,'Converse','Chuck Taylor','$65','Classic White','https://images.unsplash.com/photo-1494496195158-c3becb4f2475?w=400&q=80');
-        INSERT INTO sneakers VALUES (6,'Vans','Old Skool','$75','Black/White','https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80');
+        INSERT INTO users VALUES (4,'super_user','ByP@55_M3!','superadmin');
+        INSERT INTO sneakers VALUES (1,'Nike','Air Max 90','$120','White/Red','https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5f270e53-71aa-42c4-9acb-20604a8184af/AIR+MAX+90+%28GS%29.png');
+        INSERT INTO sneakers VALUES (2,'Adidas','Ultraboost 22','$180','Core Black','https://sneakernews.com/wp-content/uploads/2021/12/adidas-UltraBOOST-22-GZ0127-0.jpg?w=1140');
+        INSERT INTO sneakers VALUES (3,'Jordan','Air Jordan 1 Retro','$220','Chicago Red','https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b68c2282-4519-498d-8b47-445375212252/WMNS+AIR+JORDAN+1+MID+SE+EDG.png');
+        INSERT INTO sneakers VALUES (4,'New Balance','990v5','$175','Grey/Navy','https://www.holabirdsports.com/cdn/shop/files/049395_3.jpg?v=1762450690&width=1000');
+        INSERT INTO sneakers VALUES (5,'Converse','Chuck Taylor','$65','Classic White','https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/wcyxzampg1jvtjmdj3ag/YTHS+CT+CORE+HI+OPT+WHT.png');
+        INSERT INTO sneakers VALUES (6,'Vans','Old Skool','$75','https://www.pacsun.com/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwa05e54d1/product_images/0530037910117NEW_01_091.jpg?sw=800');
         INSERT INTO secrets VALUES (1,'flag{sqli_filter_bypass}','IntraCorp Admin Vault');
     """)
     c.commit(); c.close()

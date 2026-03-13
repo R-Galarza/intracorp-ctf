@@ -24,7 +24,7 @@ def init_db():
         INSERT INTO sneakers VALUES (3,'Jordan','Air Jordan 1 Retro','$220','Chicago Red','https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b68c2282-4519-498d-8b47-445375212252/WMNS+AIR+JORDAN+1+MID+SE+EDG.png');
         INSERT INTO sneakers VALUES (4,'New Balance','990v5','$175','Grey/Navy','https://www.holabirdsports.com/cdn/shop/files/049395_3.jpg?v=1762450690&width=1000');
         INSERT INTO sneakers VALUES (5,'Converse','Chuck Taylor','$65','Classic White','https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/wcyxzampg1jvtjmdj3ag/YTHS+CT+CORE+HI+OPT+WHT.png');
-        INSERT INTO sneakers VALUES (6,'Vans','Old Skool','$75','https://www.pacsun.com/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwa05e54d1/product_images/0530037910117NEW_01_091.jpg?sw=800');
+        INSERT INTO sneakers VALUES (6,'Vans','Old Skool','$75','Black/White','https://assets.vans.eu/images/t_img/c_fill,g_center,f_auto,h_815,e_unsharp_mask:100,w_652/dpr_2.0/v1769593424/VN000E9TJDU-HERO/Old-Skool-Shoes-VANS-Blue-HERO.jpg');
         INSERT INTO secrets VALUES (1,'flag{sqli_filter_bypass}','IntraCorp Admin Vault');
     """)
     c.commit(); c.close()

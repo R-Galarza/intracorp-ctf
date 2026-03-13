@@ -55,6 +55,54 @@ docker-compose up -d --build
 docker-compose ps
 ```
 
+## Detener
+
+```bash
+# 1. Detener todos (conserva contenedores)
+docker-compose stop
+```
+```bash
+# 2. Detener uno específico
+docker-compose stop challenge4
+```
+
+## Eliminar
+```bash
+# 1.  Detener Y eliminar contenedores (conserva imágenes)
+docker-compose down
+```
+```bash
+# 2.  Eliminar contenedores + imágenes del proyecto
+docker-compose down --rmi all
+```
+```bash
+# 3.  Eliminar contenedores + imágenes + volúmenes (reset total)
+docker-compose down --rmi all -v
+
+```
+
+## Logs
+```bash
+# 1. Ver logs de todos
+docker-compose logs
+```
+```bash
+# 2. logs en tiempo real
+docker-compose logs -f
+```
+```bash
+# 3.  Logs de un servicio específico
+docker logs intracorp-sqli
+docker logs intracorp-cmdi -f
+```
+```bash
+# 4. Reset total + arranque limpio
+bashdocker-compose down --rmi all -v
+docker-compose up -d --build
+
+
+
+```
 Una vez levantado, navega a **http://localhost:8000** para ver el índice de challenges.
 
 ### Comandos útiles

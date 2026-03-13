@@ -45,7 +45,7 @@ Empresa ficticia **IntraCorp** — 4 vectores de ataque reales, dificultad media
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/TU_USUARIO/intracorp-ctf.git
+git clone https://github.com/R-Galarza/intracorp-ctf.git
 cd intracorp-ctf
 
 # 2. Levantar todos los servicios

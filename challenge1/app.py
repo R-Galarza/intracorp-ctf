@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template_string, session, redirect
 import sqlite3
+import re 
 
 app = Flask(__name__)
 app.secret_key = 'intracorp_sqli_xK9'
@@ -38,18 +39,24 @@ def bl_hit(s):
     return any(w in lo for w in LOGIN_BL)
 
 # ─── blacklist for sneaker search ───────────────────────────────────────────
-# Blocks exact lowercase keywords — split tokens like un/**/ion bypass it
-SEARCH_BL = ['union','select','drop','delete','insert','--','#','/*','*/']
+# Detects full SQL keywords but allows token splitting for bypass practice
+
+SEARCH_BL = ['--','drop','delete','insert']
 
 def search_blocked(s):
     lo = s.lower()
-    return any(w in lo for w in SEARCH_BL)
+
+    # bloquear comentarios de línea
+    if '--' in lo:
+        return True
+
+    return False
+
 
 def db():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
     return conn
-
 # ─── CSS ────────────────────────────────────────────────────────────────────
 BASE = """<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -135,7 +142,7 @@ LOGIN_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title
   <p class="sub">// Acceso restringido &mdash; Personal autorizado</p>
   <form method="POST" action="/login">
     <div class="fg"><label>Username</label><input name="username" placeholder="admin" autocomplete="off" value="{{ uval or '' }}"></div>
-    <div class="fg"><label>Password</label><input type="text" name="password" placeholder="password" value="{{ pval or '' }}"></div>
+    <div class="fg"><label>Password</label><input type="password" name="password" placeholder="password" value="{{ pval or '' }}">
     <button class="btn" type="submit">&rarr; Iniciar Sesi&oacute;n</button>
   </form>
   {% if msg %}<div class="msg {{ cls }}">{{ msg }}</div>{% endif %}
@@ -171,10 +178,10 @@ DASH_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
 <div class="content">
   <div class="stitle">Cat&aacute;logo &amp; SQL Explorer</div>
   <div class="scard">
-    <div class="ainfo">&#8505; El buscador consulta directamente la base de datos. Prueba inyecciones SQL en este campo.</div>
+    <div class="ainfo">&#8505; AHORA QUE VAS A REALIZAR .. ? </div>
     <form method="POST" action="/sneakers/search">
       <div class="srow">
-        <input class="sinput" name="q" placeholder="Buscar por marca o modelo... o inyecta SQL" value="{{ q or '' }}" autocomplete="off">
+        <input class="sinput" name="q" placeholder="Buscar por marca o modelo" value="{{ q or '' }}" autocomplete="off">
         <button class="sbtn" type="submit">&#128269; BUSCAR</button>
       </div>
     </form>
@@ -325,3 +332,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
+

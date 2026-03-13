@@ -39,9 +39,9 @@ Empresa ficticia **IntraCorp** — 4 vectores de ataque reales, dificultad media
 | Docker Compose | 2.x |
 | Navegador / Burp Suite | Cualquier versión reciente |
 
----
+## Comandos útiles
 
-## Instalación
+### Instalación
 
 ```bash
 # 1. Clonar el repositorio
@@ -55,7 +55,7 @@ docker-compose up -d --build
 docker-compose ps
 ```
 
-## Detener
+### Detener
 
 ```bash
 # 1. Detener todos (conserva contenedores)
@@ -66,7 +66,7 @@ docker-compose stop
 docker-compose stop challenge4
 ```
 
-## Eliminar
+### Eliminar
 ```bash
 # 1.  Detener Y eliminar contenedores (conserva imágenes)
 docker-compose down
@@ -81,7 +81,7 @@ docker-compose down --rmi all -v
 
 ```
 
-## Logs
+### Logs
 ```bash
 # 1. Ver logs de todos
 docker-compose logs
@@ -100,31 +100,16 @@ docker logs intracorp-cmdi -f
 bashdocker-compose down --rmi all -v
 docker-compose up -d --build
 
-
-
 ```
 Una vez levantado, navega a **http://localhost:8000** para ver el índice de challenges.
 
-### Comandos útiles
+<div align="center">
 
-```bash
-# Ver logs de un challenge específico
-docker logs intracorp-sqli
-docker logs intracorp-idor
-docker logs intracorp-cmdi
-docker logs intracorp-ssti
+![Landing Page](https://github.com/R-Galarza/intracorp-ctf/blob/main/challenge4/Image/Ladding_page.png)
 
-# Reiniciar un servicio
-docker-compose restart challenge1
+</div>
 
-# Detener todo
-docker-compose down
 
-# Reconstruir desde cero
-docker-compose down && docker-compose up -d --build
-```
-
----
 
 ## Servicios
 

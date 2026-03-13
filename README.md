@@ -1,5 +1,4 @@
-# 🏴 IntraCorp CTF — Web Hacking Workshop
-
+# 🏴 IntraCorp CTF — Web Hacking 
 <div align="center">
 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
@@ -450,5 +449,5 @@ flag{ssti_without_os}             ← CH04 SSTI
 ---
 
 <div align="center">
-  Hecho para workshops de seguridad web · MIT License
+  Hecho para practicas de seguridad web · MIT License
 </div>

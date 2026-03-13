@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  landing:
+    build: ./landing
+    ports:
+      - "8000:5000"
+    container_name: intracorp-landing
+    restart: unless-stopped
+
+  challenge1:
+    build: ./challenge1
+    ports:
+      - "8001:5000"
+    container_name: intracorp-sqli
+    restart: unless-stopped
+
+  challenge2:
+    build: ./challenge2
+    ports:
+      - "8002:5000"
+    container_name: intracorp-idor
+    restart: unless-stopped
+
+  challenge3:
+    build: ./challenge3
+    ports:
+      - "8003:5000"
+    container_name: intracorp-cmdi
+    restart: unless-stopped
+
+  challenge4:
+    build: ./challenge4
+    ports:
+      - "8004:5000"
+    container_name: intracorp-ssti
+    restart: unless-stopped

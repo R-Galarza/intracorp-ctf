@@ -32,7 +32,7 @@ def init_db():
 init_db()
 
 # ─── blacklist only for login username field (not password) ─────────────────
-LOGIN_BL = ['union','select','drop','insert','delete','/*','*/']
+LOGIN_BL = ['union','select','drop','insert','delete','/*','*/','1=1']
 
 def bl_hit(s):
     lo = s.lower()

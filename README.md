@@ -134,7 +134,7 @@ La inyección SQL ocurre cuando una aplicación incorpora datos del usuario dire
 ### Descripción del challenge
 
 El portal de empleados de IntraCorp tiene:
-1. **Login con blacklist débil** — bloquea `delete`, `drop`,`insert`, `--`,  pero NO bloquea `*/`,`/**/`.
+1. **Login con blacklist débil** — bloquea `delete`, `drop`,`insert`, `--`,  pero NO bloquea `/*`,`/**/`.
 2. **Módulo de búsqueda de sneakers** — ejecuta queries directamente sobre la base de datos.
 
 La flag está en la tabla `secrets`. El módulo de búsqueda también tiene una blacklist pero admite técnicas de ofuscación.

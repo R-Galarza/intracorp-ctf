@@ -176,9 +176,9 @@ DASH_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
   </div>
 </div>
 <div class="content">
-  <div class="stitle">Cat&aacute;logo &amp; SQL Explorer</div>
+  <div class="stitle">Cat&aacute;logo</div>
   <div class="scard">
-    <div class="ainfo">&#8505; AHORA QUE VAS A REALIZAR .. ? </div>
+    <div class="ainfo"> "Cada intento fallido te acerca… o te confunde más." </div>
     <form method="POST" action="/sneakers/search">
       <div class="srow">
         <input class="sinput" name="q" placeholder="Buscar por marca o modelo" value="{{ q or '' }}" autocomplete="off">

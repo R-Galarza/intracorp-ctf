@@ -102,11 +102,7 @@ footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify
     <div class="filter-panel">
       <h3>// Filtro de seguridad activo - Blacklist</h3>
       <div class="filter-grid">
-        <div class="filter-row"><span class="filter-key">;</span><span class="filter-desc">Separador de comandos</span><span class="filter-status">BLOQUEADO</span></div>
-        <div class="filter-row"><span class="filter-key">&amp;</span><span class="filter-desc">Background exec</span><span class="filter-status">BLOQUEADO</span></div>
-        <div class="filter-row"><span class="filter-key">|</span><span class="filter-desc">Pipe operator</span><span class="filter-status">BLOQUEADO</span></div>
-        <div class="filter-row"><span class="filter-key">$</span><span class="filter-desc">Variable de shell</span><span class="filter-status">BLOQUEADO</span></div>
-        <div class="filter-row"><span class="filter-key">cat</span><span class="filter-desc">Leer archivos</span><span class="filter-status">BLOQUEADO</span></div>
+        <div class="filter-row"><span class="filter-key">😵‍💫</span><span class="filter-desc">“Que la lógica te acompañe… porque la suerte ya se fue.”</span><span class="filter-status">SUERTE</span></div>
       </div>
     </div>
   </div>

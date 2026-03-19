@@ -105,19 +105,23 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 </body>
 </html>"""
 
+import re
+
 def is_blocked(s):
-    """
-    Block bare 'os' but allow:
-      - 'o''s'  (single-quoted concat)
-      - "os"    (double-quoted)
-      - cycler  payloads that don't use 'os'
-    Strategy: block only if 'os' appears NOT surrounded by any quote chars.
-    """
-    import re
-    # Remove any quoted versions first, then check if bare 'os' remains
-    cleaned = re.sub(r"['\"]o['\"]?['\"]?s['\"]", '', s)
-    cleaned = re.sub(r'"os"', '', cleaned)
-    return 'os' in cleaned.lower()
+    s_lower = s.lower()
+
+    # 1. eliminar bypass permitido ('o''s')
+    cleaned = re.sub(r"'o''s'", "", s_lower)
+
+    # 2. bloquear "os" o 'os'
+    if re.search(r"""(['"])os\1""", cleaned):
+        return True
+
+    # 3. bloquear os "bare"
+    if re.search(r"\bos\b", cleaned):
+        return True
+
+    return False
 
 @app.route('/')
 def index():
@@ -137,7 +141,7 @@ def invoice():
 
     if is_blocked(customer):
         return render_template_string(HTML,
-            result='[WAF] El t&eacute;rmino "os" est&aacute; bloqueado. Intenta ofuscarlo.',
+            result='“Ese payload vino sin imaginación incluida.”',
             rclass='blocked', customer=customer, amount=amount)
 
     try:

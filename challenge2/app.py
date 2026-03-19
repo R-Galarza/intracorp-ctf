@@ -1,8 +1,7 @@
-from flask import Flask, request, render_template_string, session, redirect
+from flask import Flask, request, render_template_string, redirect
 import sqlite3, base64
 
 app = Flask(__name__)
-app.secret_key = 'intracorp_idor_2024_yQ7'
 DB_PATH = '/tmp/ch2.db'
 
 def init_db():
@@ -47,10 +46,7 @@ CSS = """<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;display:flex;flex-direction:column}
 nav{background:var(--surf);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .n-logo{font-family:var(--mono);font-size:14px;color:var(--accent);letter-spacing:2px}
-.n-right{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--dim)}
-.n-user{font-weight:600;color:var(--text)}
-.n-dept{font-size:11px;padding:2px 8px;background:#eff6ff;color:var(--accent);border:1px solid #bfdbfe;border-radius:4px;font-family:var(--mono)}
-a.logout{font-family:var(--mono);font-size:11px;color:var(--red);text-decoration:none;padding:4px 10px;border:1px solid var(--red);border-radius:3px}
+.n-tag{font-family:var(--mono);font-size:10px;color:var(--dim)}
 main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:40px 24px}
 h1{font-size:26px;font-weight:700;margin-bottom:4px}
 .page-sub{font-size:13px;color:var(--dim);margin-bottom:28px}
@@ -72,50 +68,18 @@ h1{font-size:26px;font-weight:700;margin-bottom:4px}
 .doc-body{padding:24px;font-size:14px;line-height:1.7}
 .doc-body.flag-content{color:var(--green);font-family:var(--mono);font-size:13px;background:#ecfdf5}
 .doc-foot{padding:12px 28px;background:var(--surf2);border-top:1px solid var(--border);font-size:11px;color:var(--dim);font-family:var(--mono)}
-.login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 20px}
-.login-card{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:40px;width:100%;max-width:400px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
-.login-card h1{font-size:22px;margin-bottom:4px}
-.login-card p{font-size:13px;color:var(--dim);margin-bottom:24px}
-.fg{margin-bottom:16px}
-label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:14px;padding:10px 14px;outline:none;border-radius:4px;transition:border-color .2s}
-input:focus{border-color:var(--accent)}
-.btn{width:100%;background:var(--accent);color:#fff;border:none;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px;cursor:pointer;border-radius:4px}
-.msg{margin-top:12px;padding:10px 14px;font-family:var(--mono);font-size:11px;border-radius:4px;background:#fef2f2;border:1px solid #fca5a5;color:var(--red)}
-.hint{margin-top:16px;padding:10px 14px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;font-family:var(--mono);font-size:11px;color:var(--accent)}
 footer{border-top:1px solid var(--border);padding:14px 40px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--dim);background:var(--surf)}
 </style>"""
-
-LOGIN_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>IntraCorp Legal</title>""" + CSS + """</head>
-<body>
-<nav><div class="n-logo">INTRACORP LEGAL</div><span style="font-family:var(--mono);font-size:10px;color:var(--dim)">CTF-02 IDOR</span></nav>
-<div class="login-wrap"><div class="login-card">
-  <h1>Portal Legal</h1>
-  <p>Sistema de contratos internos de IntraCorp</p>
-  <form method="POST" action="/login">
-    <div class="fg"><label>Usuario</label><input name="username" placeholder="usuario" autocomplete="off"></div>
-    <div class="fg"><label>Contrasena</label><input type="password" name="password" placeholder="password"></div>
-    <button class="btn" type="submit">Iniciar Sesion</button>
-  </form>
-  {% if msg %}<div class="msg">{{ msg }}</div>{% endif %}
-  <div class="hint">Usuario: jose.a / jose2024</div>
-</div></div>
-<footer><span>IntraCorp Legal System v2.0</span><span>IDOR CTF-02</span></footer>
-</body></html>"""
 
 LIST_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Contratos IntraCorp</title>""" + CSS + """</head>
 <body>
 <nav>
   <div class="n-logo">INTRACORP LEGAL</div>
-  <div class="n-right">
-    <span class="n-user">{{ session.full_name }}</span>
-    <span class="n-dept">{{ session.dept }}</span>
-    <a href="/logout" class="logout">Salir</a>
-  </div>
+  <span class="n-tag">api.intracorp.local &middot; CTF-02 &middot; IDOR</span>
 </nav>
 <main>
   <h1>Contratos Internos</h1>
-  <p class="page-sub">Documentos del sistema. Solo puede leer los contratos asignados a su usuario.</p>
+  <p class="page-sub">Documentos del sistema. Solo el propietario del contrato puede leer su contenido.</p>
   <table class="ct">
     <thead><tr><th>ID</th><th>Titulo</th><th>Propietario</th><th>Estado</th><th>Accion</th></tr></thead>
     <tbody>
@@ -126,7 +90,7 @@ LIST_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
         <td style="font-size:12px;color:var(--dim)">{{ c[5] }}</td>
         <td>{% if c[4]==0 %}<span class="badge open">Publico</span>{% else %}<span class="badge locked">Restringido</span>{% endif %}</td>
         <td>
-          {% if c[1] == session.uid %}
+          {% if c[0] == 1 %}
             <a href="/contracts/view?uid={{ c[6] }}" class="view-btn">Ver documento</a>
           {% else %}
             <span class="view-btn disabled">Sin acceso</span>
@@ -136,67 +100,67 @@ LIST_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
       {% endfor %}
     </tbody>
   </table>
+
   {% if doc %}
   <div class="doc-card">
-    <div class="doc-hd"><div><h2>{{ doc[2] }}</h2><div class="doc-meta">#{{ doc[0] }} -- {{ 'CONFIDENCIAL' if doc[4] else 'Publico' }}</div></div></div>
+    <div class="doc-hd">
+      <div>
+        <h2>{{ doc[2] }}</h2>
+        <div class="doc-meta">#{{ doc[0] }} &mdash; {{ 'CONFIDENCIAL' if doc[4] else 'Publico' }}</div>
+      </div>
+    </div>
     <div class="doc-body {% if is_flag %}flag-content{% endif %}">{{ doc[3] }}</div>
-    <div class="doc-foot">uid={{ current_uid }} -- Consulta registrada en audit log</div>
   </div>
   {% endif %}
-  {% if err %}<div style="margin-top:20px;padding:14px;border:1px solid #fca5a5;color:#e02424;font-family:var(--mono);font-size:12px;background:#fef2f2;border-radius:4px">{{ err }}</div>{% endif %}
+
+  {% if err %}
+  <div style="margin-top:20px;padding:14px;border:1px solid #fca5a5;color:#e02424;font-family:var(--mono);font-size:12px;background:#fef2f2;border-radius:4px">{{ err }}</div>
+  {% endif %}
 </main>
-<footer><span>IntraCorp Legal System v2.0</span><span>IDOR CTF-02</span></footer>
+<footer>
+  <span>IntraCorp Legal System v2.0</span>
+  <span>IDOR Challenge &middot; CTF-02</span>
+</footer>
 </body></html>"""
 
 @app.route('/')
 def index():
-    if 'uid' in session: return redirect('/contracts')
-    return render_template_string(LOGIN_TPL, msg=None)
-
-@app.route('/login', methods=['POST'])
-def login():
-    u = request.form.get('username',''); p = request.form.get('password','')
-    conn = db(); c = conn.cursor()
-    c.execute("SELECT id,username,full_name,dept FROM users WHERE username=? AND password=?",(u,p))
-    row = c.fetchone(); conn.close()
-    if row:
-        session['uid']=row[0]; session['username']=row[1]; session['full_name']=row[2]; session['dept']=row[3]
-        return redirect('/contracts')
-    return render_template_string(LOGIN_TPL, msg='Credenciales incorrectas.')
+    return redirect('/contracts')
 
 @app.route('/contracts')
 def contracts():
-    if 'uid' not in session: return redirect('/')
     conn = db(); c = conn.cursor()
-    c.execute("""SELECT ct.id,ct.owner_id,ct.title,ct.content,ct.confidential,u.full_name
+    c.execute("""SELECT ct.id, ct.owner_id, ct.title, ct.content, ct.confidential, u.full_name
                  FROM contracts ct JOIN users u ON ct.owner_id=u.id""")
     rows = c.fetchall(); conn.close()
-    enriched = [r+(encode_uid(r[0]),) for r in rows]
+    enriched = [r + (encode_uid(r[0]),) for r in rows]
     return render_template_string(LIST_TPL, contracts=enriched, doc=None, err=None, is_flag=False, current_uid=None)
 
 @app.route('/contracts/view')
 def view_contract():
-    if 'uid' not in session: return redirect('/')
-    raw_uid = request.args.get('uid','')
+    raw_uid = request.args.get('uid', '')
     cid = decode_uid(raw_uid)
+
     conn = db(); c = conn.cursor()
-    c.execute("""SELECT ct.id,ct.owner_id,ct.title,ct.content,ct.confidential,u.full_name
+    c.execute("""SELECT ct.id, ct.owner_id, ct.title, ct.content, ct.confidential, u.full_name
                  FROM contracts ct JOIN users u ON ct.owner_id=u.id""")
     rows = c.fetchall(); conn.close()
-    enriched = [r+(encode_uid(r[0]),) for r in rows]
+    enriched = [r + (encode_uid(r[0]),) for r in rows]
+
     if cid is None:
-        return render_template_string(LIST_TPL, contracts=enriched, doc=None, err=f'UID invalido: {raw_uid}', is_flag=False, current_uid=raw_uid)
+        return render_template_string(LIST_TPL, contracts=enriched, doc=None,
+            err=f'UID invalido: {raw_uid}', is_flag=False, current_uid=raw_uid)
+
     conn2 = db(); cx = conn2.cursor()
-    cx.execute("SELECT id,owner_id,title,content,confidential FROM contracts WHERE id=?",(cid,))
+    cx.execute("SELECT id, owner_id, title, content, confidential FROM contracts WHERE id=?", (cid,))
     doc = cx.fetchone(); conn2.close()
+
     if not doc:
-        return render_template_string(LIST_TPL, contracts=enriched, doc=None, err=f'No encontrado uid={raw_uid}', is_flag=False, current_uid=raw_uid)
+        return render_template_string(LIST_TPL, contracts=enriched, doc=None,
+            err=f'Documento no encontrado para uid={raw_uid}', is_flag=False, current_uid=raw_uid)
+
     return render_template_string(LIST_TPL, contracts=enriched, doc=doc, err=None,
         is_flag='flag{' in (doc[3] or ''), current_uid=raw_uid)
-
-@app.route('/logout')
-def logout():
-    session.clear(); return redirect('/')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)

@@ -99,7 +99,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 </div>
 </main>
 <footer>
-  <span>IntraCorp Billing Engine v3.4 &mdash; Jinja2</span>
+  <span>IntraCorp Billing Engine v3.4</span>
   <span>SSTI Challenge &middot; CTF-04</span>
 </footer>
 </body>

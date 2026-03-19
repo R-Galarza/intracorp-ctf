@@ -100,7 +100,7 @@ footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify
       </div>
     </div>
     <div class="filter-panel">
-      <h3>// Filtro de seguridad activo - Blacklist</h3>
+      <h3>// FRASE MOTIVADORA </h3>
       <div class="filter-grid">
         <div class="filter-row"><span class="filter-key">😵‍💫</span><span class="filter-desc">“Que la lógica te acompañe… porque la suerte ya se fue.”</span><span class="filter-status">SUERTE</span></div>
       </div>

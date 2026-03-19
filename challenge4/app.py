@@ -62,12 +62,12 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 <div class="container">
   <div class="ptag">billing.intracorp.local</div>
   <h1>Invoice<br>Generator</h1>
-  <p class="sub">// Motor de facturaci&oacute;n interno &mdash; Jinja2 Template Engine</p>
+  <p class="sub">// Facturacion Interna </p>
 
   <div class="inv">
     <div class="inv-hd">
       <h2>Nueva Factura</h2>
-      <span class="inv-num">INV-2024-####</span>
+      <span class="inv-num">INV-2026-####</span>
     </div>
     <div class="inv-body">
       <form method="POST" action="/invoice">

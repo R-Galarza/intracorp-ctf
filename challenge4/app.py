@@ -93,7 +93,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
   </div>
 
   <div class="finfo">
-    <h3>// Filtro WAF activo</h3>
+    <h3>//LEE LA SIGUIENTE LINEA</h3>
     <p>Dios te ilumine</p>
     </div>
 </div>

@@ -260,8 +260,8 @@ Host: api.intracorp.local
 |----|--------|-------------|
 | 1 (jose) | `MQ==` | `MQ%3d%3d` |
 | 2 (laura) | `Mg==` | `Mg%3d%3d` |
-| 3 (carlos) | `Mw==` | `Mw%3d%3d` |
-| 4 (admin) ← **FLAG** | `NA==` | `NA%3d%3d` |
+| 3 (admin) ← **FLAG** | `Mw==` | `Mw%3d%3d` |
+| 4 (Carlos) | `NA==` | `NA%3d%3d` |
 
 ```
 flag{idor_encoded_access}

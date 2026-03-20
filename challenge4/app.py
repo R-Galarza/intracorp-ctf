@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Create flag — also done at Dockerfile build time
 os.makedirs('/home/app', exist_ok=True)
 with open('/home/app/flag.txt', 'w') as f:
-    f.write('flag{ssti_without_os}')
+    f.write('HACKCON{SST1_W1TH0UT_0S}')
 
 HTML = """<!DOCTYPE html>
 <html lang="es">

@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Create the flag file at container start
 with open('/flag.txt', 'w') as f:
-    f.write('flag{command_injection_blacklist}\n')
+    f.write('HACKCON{CMD1_BL4CKL1ST_BYP4SS}\n')
 
 HTML = '''<!DOCTYPE html>
 <html lang="es">

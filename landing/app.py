@@ -236,25 +236,25 @@ footer{margin-top:auto;border-top:1px solid var(--border);padding:20px 60px;disp
         <td>01</td>
         <td>SQL Injection</td>
         <td>portal.intracorp.local</td>
-        <td><code>flag{s****_****_****s}</code></td>
+        <td><code>HACKCON{SQL1_************}</code></td>
       </tr>
       <tr>
         <td>02</td>
         <td>IDOR Encoded</td>
         <td>api.intracorp.local</td>
-        <td><code>flag{****r_****d_****}</code></td>
+        <td><code>HACKCON{1D0R_************}</code></td>
       </tr>
       <tr>
         <td>03</td>
         <td>Command Injection</td>
         <td>tools.intracorp.local</td>
-        <td><code>flag{c****_**n**_****}</code></td>
+        <td><code>HACKCON{CMD1_************}</code></td>
       </tr>
       <tr>
         <td>04</td>
         <td>SSTI Jinja2</td>
         <td>billing.intracorp.local</td>
-        <td><code>flag{****_wit****_****}</code></td>
+        <td><code>HACKCON{SST1_************}</code></td>
       </tr>
     </tbody>
   </table>

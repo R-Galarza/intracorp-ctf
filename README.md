@@ -115,10 +115,10 @@ Una vez levantado, navega a **http://localhost:8000** para ver el índice de cha
 | Puerto | Servicio | Vulnerabilidad | Flag |
 |--------|----------|---------------|------|
 | **:8000** | Landing Page | — | — |
-| **:8001** | portal.intracorp.local | SQL Injection | `flag{sqli_filter_bypass}` |
-| **:8002** | api.intracorp.local | IDOR | `flag{idor_encoded_access}` |
-| **:8003** | tools.intracorp.local | Command Injection | `flag{command_injection_blacklist}` |
-| **:8004** | billing.intracorp.local | SSTI Jinja2 | `flag{ssti_without_os}` |
+| **:8001** | portal.intracorp.local | SQL Injection | `HACKCON{SQL1_F1LT3R_BYP4SS}` |
+| **:8002** | api.intracorp.local | IDOR | `HACKCON{1D0R_3NC0D3D_4CC3SS}` |
+| **:8003** | tools.intracorp.local | Command Injection | `HACKCON{CMD1_BL4CKL1ST_BYP4SS}` |
+| **:8004** | billing.intracorp.local | SSTI Jinja2 | `HACKCON{SST1_W1TH0UT_0S}` |
 
 ---
 
@@ -425,10 +425,10 @@ intracorp-ctf/
 ## Flags esperadas
 
 ```
-flag{sqli_filter_bypass}          ← CH01 SQL Injection
-flag{idor_encoded_access}         ← CH02 IDOR
-flag{command_injection_blacklist} ← CH03 Command Injection
-flag{ssti_without_os}             ← CH04 SSTI
+HACKCON{SQL1_F1LT3R_BYP4SS}    ← CH01 SQL Injection
+HACKCON{1D0R_3NC0D3D_4CC3SS}   ← CH02 IDOR
+HACKCON{CMD1_BL4CKL1ST_BYP4SS} ← CH03 Command Injection
+HACKCON{SST1_W1TH0UT_0S}       ← CH04 SSTI
 ```
 
 ---

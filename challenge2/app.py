@@ -17,7 +17,7 @@ def init_db():
         INSERT INTO users VALUES (3,'admin','adm1n_s3cr3t!','Administrador del Sistema','TI');
         INSERT INTO contracts VALUES (1,1,'Contrato de Servicios Q1','Contrato estandar de servicios para el primer trimestre. Proveedor: TechSupply Inc. Valor: $15,000.',0);
         INSERT INTO contracts VALUES (2,2,'Evaluacion de Desempeno RRHH','Evaluacion interna de RRHH. CONFIDENCIAL.',1);
-        INSERT INTO contracts VALUES (3,3,'Credenciales Admin Vault','flag{idor_encoded_access} Acceso administrativo al sistema central. NO COMPARTIR.',1);
+        INSERT INTO contracts VALUES (3,3,'Credenciales Admin Vault','HACKCON{1D0R_3NC0D3D_4CC3SS} Acceso administrativo al sistema central. NO COMPARTIR.',1);
         INSERT INTO contracts VALUES (4,2,'Plan de Compensaciones 2024','Escala salarial revisada. CONFIDENCIAL.',1);
     """)
     conn.commit(); conn.close()

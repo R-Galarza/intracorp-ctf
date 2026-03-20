@@ -63,7 +63,7 @@ footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify
 <body>
 <header>
   <div class="logo">INTRA<span>CORP</span> / TOOLS</div>
-  <div class="badge">&#9888; CTF Challenge 03</div>
+  <div class="badge">&#9888; Internal Tools</div>
 </header>
 <main>
   <div class="container">
@@ -109,7 +109,7 @@ footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify
 </main>
 <footer>
   <span>IntraCorp NetTools v1.8</span>
-  <span>Command Injection - Difficulty: MEDIUM</span>
+  <span>IntraCorp Internal Systems</span>
 </footer>
 </body>
 </html>'''

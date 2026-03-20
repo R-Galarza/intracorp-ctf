@@ -56,7 +56,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 <body>
 <header>
   <div class="logo">Intra<span>Corp</span> Billing</div>
-  <div class="badge">CTF-04 &middot; SSTI</div>
+  <div class="badge">Billing Portal</div>
 </header>
 <main>
 <div class="container">
@@ -100,7 +100,7 @@ footer{border-top:1px solid var(--border);padding:18px 60px;display:flex;justify
 </main>
 <footer>
   <span>IntraCorp Billing Engine v3.4</span>
-  <span>SSTI Challenge &middot; CTF-04</span>
+  <span>IntraCorp Internal Systems</span>
 </footer>
 </body>
 </html>"""

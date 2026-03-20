@@ -75,7 +75,7 @@ LIST_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
 <body>
 <nav>
   <div class="n-logo">INTRACORP LEGAL</div>
-  <span class="n-tag">api.intracorp.local &middot; CTF-02 &middot; IDOR</span>
+  <span class="n-tag">api.intracorp.local</span>
 </nav>
 <main>
   <h1>Contratos Internos</h1>
@@ -119,7 +119,7 @@ LIST_TPL = """<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>
 </main>
 <footer>
   <span>IntraCorp Legal System v2.0</span>
-  <span>IDOR Challenge &middot; CTF-02</span>
+  <span>IntraCorp Internal Systems</span>
 </footer>
 </body></html>"""
 
